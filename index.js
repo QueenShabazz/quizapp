@@ -32,6 +32,7 @@ function checked () {
 	});
 	}
 
+checked();
 //generate question + answers HTML -looping thru the question + answer data
 function displayQuestion() {
 //DISPLAY QUESTION + ANSWER OPTIONS
@@ -58,7 +59,6 @@ function updateQuestionNumber (){
 
 //evaluate answer function - increment score 
 function select() {
-	checked();
 	$('form').on('click', '.submit', function (event){
 	event.preventDefault();
 	let selected = $('input:checked');
@@ -68,7 +68,7 @@ function select() {
 		selected.parent().addClass('correct');
 		answeredCorrect();
 		updateQuestionNumber();
-	} else {
+		} else {
 			selected.parent().addClass('incorrect');	
 			answeredIncorrect ();
 			updateQuestionNumber ();
