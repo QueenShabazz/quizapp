@@ -22,7 +22,6 @@ function start () {
 	});
 }
 
-document.getElementsByClassName("answer-list").required = true;
 
 //click on answer list
 function checked () {
@@ -32,18 +31,19 @@ function checked () {
 	});
 	}
 
-checked();
+
 //generate question + answers HTML -looping thru the question + answer data
 function displayQuestion() {
 //DISPLAY QUESTION + ANSWER OPTIONS
 	$("#question").text(STORE[currentQ].text);
 	let answers = "";
 	for (let i = 0; i < STORE[currentQ].answers.length; i++) {
-    answers += `<div class='answer-list'><fieldset data-labelfor= ${i}> <label> <input id=${i} type='radio' name='answer' value=${STORE[currentQ].answers[i]} required>${STORE[currentQ].answers[i]} </fieldset></div><br>`;
-  }
-  $("#answer").empty();
-  $("#answer").append(answers);
-  $("#answer").append(`<button type="submit" class="submit" style="margin-top: 2%;">Submit</button>`);
+    
+   	 	answers += `<div class='answer-list'><fieldset data-labelfor= ${i}> <label for=${i}> ${STORE[currentQ].answers[i]} </label> <input id=${i} type='radio' name='answer' value="${STORE[currentQ].answers[i]}" required></fieldset></div><br>`;
+  		}
+  		$("#answer").empty();
+  		$("#answer").append(answers);
+  		$("#answer").append(`<button type="submit" class="submit" style="margin-top: 2%;">Submit</button>`);
 }
 
 displayQuestion();
@@ -59,11 +59,12 @@ function updateQuestionNumber (){
 
 //evaluate answer function - increment score 
 function select() {
-	$('form').on('click', '.submit', function (event){
+	$('form').on('click', 'button.submit', function (){
 	event.preventDefault();
 	let selected = $('input:checked');
 	let answer = selected.val();
-	let correct = `${STORE[currentQ].correct}`;
+		console.log(answer);
+	let correct = `${STORE[currentQ].correctName}`;
 	if (answer === correct){
 		selected.parent().addClass('correct');
 		answeredCorrect();
@@ -73,9 +74,10 @@ function select() {
 			answeredIncorrect ();
 			updateQuestionNumber ();
 			}
-
 		});
 	}
+
+
 //display feedback - has next button to get to next question
 //correct answer
 function feedbackC () {
@@ -150,12 +152,15 @@ function nextQuestion () {
 			
 //RUN QUIZ FUNCTIONS
 function createQuiz () {
+	
 	displayResults();
   	start();
 	select();
 	nextQuestion();
 	restartQuiz();
 	displayQuestion();
+	document.getElementsByClassName("answer-list").required = true;
+
 }
 
 $(createQuiz);

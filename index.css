@@ -102,9 +102,10 @@ fieldset{
 	color: blue;
 }
 
-label{
+button, label{
 	cursor: pointer;
 }
+
 .incorrect{
 	height: 150px;
 	background-color: white;
@@ -128,6 +129,7 @@ label{
 	font-size: 20px;
 }
 
+/*
 @media only screen and (max-width: 600px){
 	
-}
+} */
