@@ -120,8 +120,8 @@ function restartQuiz () {
 
 //results page
 function displayResults () {
-	$("#question").remove();
 	if (currentQ === 5){
+	$("#question").remove();
 	$('#answer').html(`
 	<h2> Based on your answers, your understanding of web builders is a ${score} /5 </h2>
 	<p id="cms-info">Here is more information about the website builder, we think is best for you and why, based off of the answers you provided: <a href="queenscript.com"> More Information On Web Sites & Content Management Systems</a></p> <button class="restartButton">Restart Quiz</button>
