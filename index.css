@@ -51,7 +51,7 @@ ul{
 /* Quiz Styling */
 
 .nextButton:hover, .restartButton:hover, .submit:hover{
-
+	color: white;
     background: radial-gradient(blue, transparent);}
 
 .nextButton, .restartButton, .submit{
