@@ -49,6 +49,11 @@ ul{
 }
 
 /* Quiz Styling */
+
+.nextButton:hover, .restartButton:hover, .submit:hover{
+
+    background: radial-gradient(blue, transparent);}
+
 .nextButton, .restartButton, .submit{
 	padding: 1% 4%;
     margin-top: 4%;
