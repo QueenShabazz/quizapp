@@ -38,12 +38,12 @@ function displayQuestion() {
 	$("#question").text(STORE[currentQ].text);
 	let answers = "";
 	for (let i = 0; i < STORE[currentQ].answers.length; i++) {
-    
-   	 	answers += `<div class='answer-list'><fieldset data-labelfor= ${i}> <label for=${i}> ${STORE[currentQ].answers[i]} </label> <input id=${i} type='radio' name='answer' value='${STORE[currentQ].answers[i]}' required='required'/></fieldset></div><br>`;
+			answers += `<div class='answer-list'><fieldset data-labelfor= ${i}> <label for=${i}> ${STORE[currentQ].answers[i]} 
+			</label> <input id=${i} type='radio' name='answer' value='${STORE[currentQ].answers[i]}' required/></fieldset></div><br>`;
   		}
   		$("#answer").empty();
   		$("#answer").append(answers);
-  		$("#answer").append(`<button type="submit" class="submit" style="margin-top: 2%;">Submit</button>`);
+  		$("#answer").append(`<button type="submit" class="submit">Submit</button>`);
 }
 
 displayQuestion();
@@ -59,23 +59,23 @@ function updateQuestionNumber (){
 
 //evaluate answer function - increment score 
 function select() {
-	$('form').on('click', 'button.submit', function (){
-	event.preventDefault();
-	let selected = $('input:checked');
-	let answer = selected.val();
+	$('form').submit(function (){
+		event.preventDefault();
+		let selected = $('input:checked');
+		let answer = selected.val();
 		console.log(answer);
-	let correct = `${STORE[currentQ].correctName}`;
-	if (answer === correct){
-		selected.parent().addClass('correct');
-		answeredCorrect();
-		updateQuestionNumber();
+		let correct = `${STORE[currentQ].correctName}`;
+		if (answer === correct){
+			selected.parent().addClass('correct');
+			answeredCorrect();
+			updateQuestionNumber();
 		} else {
 			selected.parent().addClass('incorrect');	
 			answeredIncorrect ();
 			updateQuestionNumber ();
-			}
-		});
-	}
+		}
+	});
+}
 
 
 //display feedback - has next button to get to next question

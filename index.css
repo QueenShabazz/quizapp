@@ -68,6 +68,8 @@ ul{
 
 #question{
 	margin: 2% 0 3% 0;
+	padding: 0 30%;
+	background:rgba(252, 255, 255, .7);
 }
 
 input[type="radio"]{
@@ -84,7 +86,7 @@ input[type="radio"]{
 }
 
 
-fieldset:hover, fieldset:focus-within{
+fieldset:hover, fieldset:focus-within, fieldset:focus{
 	background: orange !important;
 }
 
