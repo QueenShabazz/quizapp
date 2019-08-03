@@ -159,7 +159,7 @@ function createQuiz () {
 	nextQuestion();
 	restartQuiz();
 	displayQuestion();
-	document.getElementsByClassName("answer-list").required = true;
+	//document.getElementsByClassName("answer-list").required = true;
 
 }
 
