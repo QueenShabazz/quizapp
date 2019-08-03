@@ -39,7 +39,7 @@ function displayQuestion() {
 	let answers = "";
 	for (let i = 0; i < STORE[currentQ].answers.length; i++) {
     
-   	 	answers += `<div class='answer-list'><fieldset data-labelfor= ${i}> <label for=${i}> ${STORE[currentQ].answers[i]} </label> <input id=${i} type='radio' name='answer' value='${STORE[currentQ].answers[i]}' required="required" /></fieldset></div><br>`;
+   	 	answers += `<div class='answer-list'><fieldset data-labelfor= ${i}> <label for=${i}> ${STORE[currentQ].answers[i]} </label> <input id=${i} type='radio' name='answer' value='${STORE[currentQ].answers[i]}' required='required'/></fieldset></div><br>`;
   		}
   		$("#answer").empty();
   		$("#answer").append(answers);
