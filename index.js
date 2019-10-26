@@ -30,7 +30,7 @@ function checked () {
 		function(i, oldVal) {return !oldVal; });
 	});
 	}
-
+console.log(checked)
 
 //generate question + answers HTML -looping thru the question + answer data
 function displayQuestion() {
@@ -38,9 +38,18 @@ function displayQuestion() {
 	$("#question").text(STORE[currentQ].text);
 	let answers = "";
 	for (let i = 0; i < STORE[currentQ].answers.length; i++) {
-			answers += `<div class='answer-list'><fieldset data-labelfor= ${i}> <label for=${i}> ${STORE[currentQ].answers[i]} 
-			</label> <input id=${i} type='radio' name='answer' value='${STORE[currentQ].answers[i]}' required></input></fieldset></div><br>`;
-  		}
+			answers += `
+			<div class='answer-list'>
+				<fieldset data-labelfor= ${i}> 
+				<label for=${i}> ${STORE[currentQ].answers[i]} 
+				</label> 
+				<input id=${i} type='radio' name='answer' value=${STORE[currentQ].answers[i]} required />
+				</fieldset>
+			</div>
+			<br>`;
+			
+		  }
+		  
   		$("#answer").empty();
   		$("#answer").append(answers);
   		$("#answer").append(`<button type="submit" class="submit">Submit</button>`);
@@ -57,24 +66,31 @@ function updateQuestionNumber (){
 }
 
 
+
 //evaluate answer function - increment score 
 function select() {
-	$('form').submit(function (){
-		event.preventDefault();
-		let selected = $('input:checked');
-		let answer = selected.val();
-		console.log(answer);
-		let correct = `${STORE[currentQ].correctName}`;
-		if (answer === correct){
-			selected.parent().addClass('correct');
-			answeredCorrect();
-			updateQuestionNumber();
-		} else {
-			selected.parent().addClass('incorrect');	
-			answeredIncorrect ();
-			updateQuestionNumber ();
+	$('form').submit(
+		function (){
+			let selected = $('input[name= answer]:checked', '#answer');
+			console.log(selected)
+			let answer = selected.val();
+			console.log(answer);
+			let correct = `${STORE[currentQ].correctName}`;
+			console.log(correct)
+			if (answer[0, 1] === correct[0, 1]	){
+				selected.parent().addClass('correct');
+				console.log(answeredCorrect)
+				answeredCorrect();
+				updateQuestionNumber();
+			} else {
+				selected.parent().addClass('incorrect');	
+				answeredIncorrect ();
+				updateQuestionNumber ();
+				}
+				event.preventDefault();
+
 		}
-	});
+	);
 }
 
 

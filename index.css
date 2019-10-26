@@ -25,6 +25,7 @@ body{
 	padding: -80% 5%;
 	background-repeat: no-repeat, no-repeat;
 	height: 100vh;
+	background-size: cover;
 }
 
 #enter{
