@@ -30,7 +30,6 @@ function checked () {
 		function(i, oldVal) {return !oldVal; });
 	});
 	}
-console.log(checked)
 
 //generate question + answers HTML -looping thru the question + answer data
 function displayQuestion() {
@@ -72,14 +71,10 @@ function select() {
 	$('form').submit(
 		function (){
 			let selected = $('input[name= answer]:checked', '#answer');
-			console.log(selected)
 			let answer = selected.val();
-			console.log(answer);
 			let correct = `${STORE[currentQ].correctName}`;
-			console.log(correct)
 			if (answer[0, 1] === correct[0, 1]	){
 				selected.parent().addClass('correct');
-				console.log(answeredCorrect)
 				answeredCorrect();
 				updateQuestionNumber();
 			} else {
@@ -149,7 +144,7 @@ function displayResults () {
 
 displayResults ();
 
-console.log(displayResults());
+);
 
 //next question
 //what happens when the user clicks next
