@@ -144,7 +144,7 @@ function displayResults () {
 
 displayResults ();
 
-);
+;
 
 //next question
 //what happens when the user clicks next
